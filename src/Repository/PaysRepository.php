@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Pays;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 
 /**
  * @method Pays|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,20 +20,19 @@ class PaysRepository extends ServiceEntityRepository
         parent::__construct($registry, Pays::class);
     }
 
-    // /**
-    //  * @return Pays[] Returns an array of Pays objects
-    //  */
+     /*
+      * @return Pays[] Returns an array of Pays objects
+      */
     /*
-    public function findByExampleField($value)
+    public function nbEtapePays(): Query
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $results= $this->createQueryBuilder('pays')
+        ->select    ('name, continent, COUNT(etape) AS nombreEtape')
+        ->join      ('id','etape')
+        ->groupBy   ('name')
+        ->getQuery()
         ;
+        return $results;
     }
     */
 

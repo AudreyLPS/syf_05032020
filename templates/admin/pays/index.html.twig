@@ -3,7 +3,7 @@
 {% block body %}
 	<div class="row">
 		<div class="col">
-			<h1>Gestion des etapes</h1>
+			<h1>Gestion des pays</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -16,20 +16,22 @@
 	</div>
 		<table class="table table-striped">
 			<tr>
-				<th>Pays</th>
-				<th>Nombre d'étape</th>
-				<th>Actions</th>
+				<th class="col-md-2">Pays</th>
+				<th class="col-md-2">Continent</th>
+				<th class="col-md-1">Nbre d'étape</th>
+				<th class="col-md-6">Actions</th>
 			</tr>
 			{% for pays in results %}
-				<tr>
-					<td>{{ pays.name }}</td>
-					<td></td>
-					<td>
-						<a href="{{ url('admin.etape.form') }}" class="btn btn-info col-md-3">Ajouter une etape</a>
-						<a href="" class="btn btn-warning col-md-3">Modifier</a>
-						<a href="" class="btn btn-danger col-md-3">Supprimer</a>
-					</td>
-				</tr>
+					<tr>
+						<td>{{ pays.paysName }}</td>
+						<td>{{ pays.continentName }}</td>					
+						<td>{{ pays.NombreDetape }}</td>
+						<td>
+							<a href="{{ url('admin.etape.form') }}" class="btn btn-info col-md-3">Ajouter une etape</a>
+							<a href="" class="btn btn-warning col-md-3">Modifier</a>
+							<a href="{{ url('admin.pays.delete', { id:pays.paysId }) }}" class="btn btn-danger col-md-3">Supprimer</a>
+						</td>
+					</tr>
 			{% endfor %}
 		</table>
 	</div>

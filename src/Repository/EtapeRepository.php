@@ -19,32 +19,19 @@ class EtapeRepository extends ServiceEntityRepository
         parent::__construct($registry, Etape::class);
     }
 
-    // /**
-    //  * @return Etape[] Returns an array of Etape objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+     /**
+     * @return Etape[] Returns an array of Etape objects
     */
-
-    /*
-    public function findOneBySomeField($value): ?Etape
+    
+    public function nbEtape()
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('etape')
+        
+            ->select    ('COUNT(etape.id) AS NombreDetape, pays.name AS paysName,continent.name AS continentName, pays.id as paysId')
+            ->join('etape.pays', 'pays')
+            ->join('pays.continent', 'continent')
+            ->groupBy('pays.name','continent.name')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }

@@ -28,11 +28,13 @@ class EtapeController extends AbstractController
 
 	public function details(int $id, EtapeRepository $etapeRepository):Response
 	{
+		
 		$etape = $etapeRepository->find($id);
 
 		return $this->render('etape/details.html.twig', [
 			'etape' => $etape
 		]);
 	}
+
 	
 }
