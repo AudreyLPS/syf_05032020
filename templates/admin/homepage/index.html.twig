@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row">
+		<div class="col">
+			<h1>Administration</h1>
+			<p>
+				<a href="{{ url('admin.etape.index') }}">Gérer les étapes</a>
+			</p>
+			<p>
+				<a href="{{ url('admin.pays') }}">Gérer les pays visités</a>
+			</p>
+		</div>
+	</div>
+{% endblock %}

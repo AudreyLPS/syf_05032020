@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+ {% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
+{% block body %}
+	<div >
+		<div>
+        
+			<h1>Gestion des étapes</h1>
+		</div>
+	</div>
+    <div>
+        {{ form_start(form, { attr: { novalidate:'novalidate' } }) }}
+            <p class="form-group">
+                {{ form_label(form.name,'Nom : ') }}
+                {{ form_widget(form.name,
+                    { attr: 
+                        {
+                            class: "form-control",
+                            placeholder:"Saisissez le nom de l'étape",
+                            autofocus:'autofocus'
+                        } 
+                    }) }}
+            </p>
+            <p class="form-group">
+                {{ form_label(form.description,'Description : ') }}
+                {{ form_widget(form.description,
+                    { attr: 
+                        {
+                            class: "form-control",
+                            placeholder:'Saisissez la description'
+                        } 
+                    }) }}
+            </p>
+            <p class="form-group">
+                {{ form_label(form.pays,'Pays : ') }}
+                {{ form_widget(form.pays,
+                    { attr: 
+                        {
+                            class: "form-control",
+                            placeholder:'Saisissez le pays'
+                        } 
+                    }) }}
+            </p>
+            <p class="form-group">
+                {{ form_label(form.duration,'Durée : ') }}
+                {{ form_widget(form.duration,
+                    { attr: 
+                        {
+                            class: "form-control",
+                            placeholder:"Saisissez la durée de l'étape"
+                        } 
+                    }) }}
+            </p>
+            <p>
+                {{ form_label(form.image,'Image : ') }}
+                {{ form_widget(form.image,
+                    { attr: 
+                        {
+                            class: "form-control",
+                            placeholder:"Saisissez la durée de l'étape"
+                        } 
+                    }) }}
+            </p>
+			<p>
+                <a href="{{ url('admin.etape.index') }}" class="btn btn-danger col-md-3">Annuler</a>
+				<input type="submit" value="Valider" class="btn btn-info col-md-3 float-right"/>
+			</p>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+
+
+
+
+

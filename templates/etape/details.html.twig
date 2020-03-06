@@ -1,0 +1,22 @@
+{# extends: Héritage d'un template parent #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-sm-3">
+			<img src="{{ asset('img/etape/' ~ etape.image) }}" class="img-fluid" alt="">
+		</div>
+		<div class="col-sm-9">
+			<h3>{{ etape.name }}</h3>
+            <p class="h6"><span class="font-weight-bold">Pays :</span> {{ etape.pays.name }}</p>
+			<p>{{ etape.description }}</p>
+            <hr>
+			{% if etape.duration == 1  %}
+				<p class="font-weight-bold">Cette étape a durée {{ etape.duration }} jour</p>
+			{% else %}
+				<p class="font-weight-bold">Cette étape a durée {{ etape.duration }} jours</p>
+			{% endif %}
+			
+		</div>
+	</div>
+{% endblock %}

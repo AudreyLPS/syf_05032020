@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="row">
+		<div class="col">
+			<h1>Vos Etapes</h1>
+		</div>
+	</div>
+    <div class="row">
+        {% for etape in results %}
+        <div class="col-sm-3">
+            <img src="{{ asset('img/etape/' ~ etape.image) }}" class="img-fluid" alt="">  
+            <p class="font-weight-bold">{{ etape.name }}</p>
+			{% if etape.duration == 1  %}
+				<p class="font-weight-bold">Cette étape a durée {{ etape.duration }} jour</p>
+			{% else %}
+				<p class="font-weight-bold">Cette étape a durée {{ etape.duration }} jours</p>
+			{% endif %}
+            <p>
+                <a href="{{ url("etape.details", { id:etape.id }) }}" class="btn btn-secondary btn-block">Voir</a>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+   {% endblock %}

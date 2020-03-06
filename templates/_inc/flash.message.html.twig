@@ -1,0 +1,6 @@
+{% for notice_boucle in app.flashes('notice') %}
+    <p class="alert alert-success">{{ notice_boucle }}</p>
+{% endfor %}
+{% for notice_boucle in app.flashes('notice_danger') %}
+    <p class="alert alert-danger">{{ notice_boucle }}</p>
+{% endfor %}
