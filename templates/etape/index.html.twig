@@ -2,10 +2,11 @@
 {% block body %}
 	<div class="row">
 		<div class="col">
-			<h1>Vos Etapes</h1>
+			<h1>Toutes les étapes</h1>
 		</div>
 	</div>
     <div class="row">
+    
         {% for etape in results %}
         <div class="col-sm-3">
             <img src="{{ asset('img/etape/' ~ etape.image) }}" class="img-fluid" alt="">  

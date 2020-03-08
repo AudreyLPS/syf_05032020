@@ -12,8 +12,7 @@
     <div>
         {{ form_start(form, { attr: { novalidate:'novalidate' } }) }}
             <p class="form-group">
-                {{ form_label(form.name,'Nom : ') }}
-                {{ form_widget(form.name,
+                {{ form_row(form.name,
                     { attr: 
                         {
                             class: "form-control",
@@ -23,8 +22,7 @@
                     }) }}
             </p>
             <p class="form-group">
-                {{ form_label(form.description,'Description : ') }}
-                {{ form_widget(form.description,
+                {{ form_row(form.description,
                     { attr: 
                         {
                             class: "form-control",
@@ -33,8 +31,7 @@
                     }) }}
             </p>
             <p class="form-group">
-                {{ form_label(form.pays,'Pays : ') }}
-                {{ form_widget(form.pays,
+                {{ form_row(form.pays,
                     { attr: 
                         {
                             class: "form-control",
@@ -43,8 +40,7 @@
                     }) }}
             </p>
             <p class="form-group">
-                {{ form_label(form.duration,'Durée : ') }}
-                {{ form_widget(form.duration,
+                {{ form_row(form.duration,
                     { attr: 
                         {
                             class: "form-control",
@@ -53,12 +49,10 @@
                     }) }}
             </p>
             <p>
-                {{ form_label(form.image,'Image : ') }}
-                {{ form_widget(form.image,
+                {{ form_row(form.image,
                     { attr: 
                         {
                             class: "form-control",
-                            placeholder:"Saisissez la durée de l'étape"
                         } 
                     }) }}
             </p>

@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!--nav class="navbar navbar-expand-lg navbar-light bg-light"-->
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,13 +12,34 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('etape.index') }}">Etapes</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('admin.homepage.index') }}">Admin</a>
+      {% if is_granted('ROLE_ADMIN') %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+          <div class="dropdown-menu">
+            <a href="{{ url('admin.etape.index') }}" class="dropdown-item">Gérer les étapes</a>
+            <a href="{{ url('admin.pays') }}" class="dropdown-item">Gérer les pays visités</a>
+          </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('admin.contact.index') }}">Mes messages</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('contact.form') }}">Envoyer un message</a>
+      </li>
+      {% endif %}
+      {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('security.login') }}">Connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('registration.register') }}">S'enregistrer</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('security.logout') }}">Déconnexion</a>
+      </li>
+      {% endif %}
     </ul>    
-    <form class="form-inline my-2 my-lg-0" method="POST" action="">
-      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Rechercher">
-      <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Rechercher</button>
-    </form>
   </div>
 </nav>

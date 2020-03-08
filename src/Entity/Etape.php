@@ -35,7 +35,7 @@ class Etape
      * @ORM\Column(type="string", length=50)
      */
     private $image;
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Pays")
      */
@@ -82,12 +82,12 @@ class Etape
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image): self
     {
         $this->image = $image;
 
@@ -105,4 +105,5 @@ class Etape
 
         return $this;
     }
+
 }

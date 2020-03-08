@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="row">
+		<div class="col">
+			<h1>{{ continent.name }} : Pays Visités</h1>
+		</div>
+	</div>
+    <div class="row">
+        {% if results | length == 0 %}
+            <div class="row">
+                <div class="col">
+                    <p class="font-weight-bold">Aucun pays n'a été visité dans ce continent</p>
+                </div>
+            </div>
+        {% else %}
+        {% for pays in results %}
+            <a href="{{ url("pays.index", { id:pays.id }) }}" class="btn btn-outline-secondary col-md-3 mr-3 mb-3">{{ pays.name }}</a>
+            <hr>
+        {% endfor %}
+        {% endif %}
+    </div>
+   {% endblock %}

@@ -7,6 +7,7 @@ use App\Entity\Etape;
 use App\Form\Model\EtapeFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use App\EventSubscriber\Form\EtapeFormSubscriber;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -52,7 +53,6 @@ class EtapeType extends AbstractType
                     ])
                 ]
             ])
-            ->add('image')
             ->add('pays', EntityType::class, [
                 'class'=>Pays::class,
                 'choice_label'=>'name',
@@ -64,6 +64,7 @@ class EtapeType extends AbstractType
                 ]
             ])
         ;
+        $builder->addEventSubscriber(new EtapeFormSubscriber());
     }
 
     public function configureOptions(OptionsResolver $resolver)

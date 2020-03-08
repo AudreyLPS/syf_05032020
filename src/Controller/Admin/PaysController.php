@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Pays;
+use App\Form\PaysType;
 use App\Repository\PaysRepository;
 use App\Repository\EtapeRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,6 +44,35 @@ class PaysController extends AbstractController
 		$this->addFlash('notice_danger', "Le pays a été supprimé avec l'ensemble de ses étapes");
 		return $this->redirectToRoute('admin.pays');
         
-	}
+    }
+    
+    /**
+     * @Route("/pays/form", name="admin.pays.form")
+     * @Route("/pays/form/update/{id}", name="admin.pays.form.update")
+     */
+
+    public function form(Request $request, EntityManagerInterface $entityManager, int $id = null, PaysRepository $paysRepository):Response{
+		
+		$type  = PaysType::class;
+		$model = $id ? $paysRepository->find($id) : new Pays();
+		$form  = $this->createForm($type,$model);
+		$form->handleRequest($request);
+
+		if($form->isSubmitted() && $form->isValid()){
+			
+			$id ? null : $entityManager->persist($model);
+			$entityManager->flush();
+
+			 $id ? $message="Le pays à été modifié" : $message="Le pays a été ajoutée" ;
+			 $this->addFlash('notice', $message);
+            
+			 return $this->redirectToRoute('admin.pays');
+
+		}
+
+        return $this->render("admin/pays/form.html.twig",[
+			'form'=>$form->createView()			
+        ]);
+    }
     
 }

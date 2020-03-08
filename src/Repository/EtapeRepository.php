@@ -27,7 +27,7 @@ class EtapeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('etape')
         
-            ->select    ('COUNT(etape.id) AS NombreDetape, pays.name AS paysName,continent.name AS continentName, pays.id as paysId')
+            ->select('COUNT(etape.id) AS NombreDetape, pays.name AS paysName,continent.name AS continentName, pays.id as paysId')
             ->join('etape.pays', 'pays')
             ->join('pays.continent', 'continent')
             ->groupBy('pays.name','continent.name')

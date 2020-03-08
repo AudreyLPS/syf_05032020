@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row">
+		<div class="col">
+			<h1>Boite de reception</h1>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-md-12">
+		{% include "_inc/flash.message.html.twig" %}
+	
+	</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Nom de l'internaute</th>
+				<th>Email</th>
+				<th>Message</th>
+				<th>Actions</th>
+			</tr>
+			{% for message in results %}
+				<tr>
+					<td>{{ message.name }}</td>
+					<td>{{ message.email }}</td>
+					<td>{{ message.message }}</td>
+					<td>
+						<a href="{{ url('admin.contact.delete', { id:message.id }) }}" class="btn btn-danger">Supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+
+
+
+
+
+

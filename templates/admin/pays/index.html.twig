@@ -11,7 +11,7 @@
 		{% include "_inc/flash.message.html.twig" %}
 	
     <p class="text-right">
-        <a href="" class="btn btn-success"> Ajouter un pays</a>
+        <a href="{{ url('admin.pays.form') }}" class="btn btn-success"> Ajouter un pays</a>
     </p>
 	</div>
 		<table class="table table-striped">
@@ -28,7 +28,7 @@
 						<td>{{ pays.NombreDetape }}</td>
 						<td>
 							<a href="{{ url('admin.etape.form') }}" class="btn btn-info col-md-3">Ajouter une etape</a>
-							<a href="" class="btn btn-warning col-md-3">Modifier</a>
+							<a href="{{ url('admin.pays.form.update', { id:pays.paysId }) }}" class="btn btn-warning col-md-3">Modifier</a>
 							<a href="{{ url('admin.pays.delete', { id:pays.paysId }) }}" class="btn btn-danger col-md-3">Supprimer</a>
 						</td>
 					</tr>

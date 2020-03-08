@@ -18,10 +18,11 @@ class EtapeFixtures extends Fixture implements DependentFixtureInterface
 
 	    for($i = 0; $i < 60; $i++) {
 		    $etape = new Etape();
-		    $etape->setName( $faker->sentence(3) );
+		    $etape->setName( $faker->text(24));
 		    $etape->setDescription( $faker->text(200) );
-		    $etape->setDuration( $faker->randomFloat(0, 1, 15) );
-			$etape->setImage('default.jpg');
+			$etape->setDuration( $faker->randomFloat(0, 1, 15) );
+			$etape->setImage("default.jpg");
+			//$etape->setImage( $faker->image('public/img/etape', 800, 450, null, false) );
 			
 			$randomPays = random_int(0,29);
 			$pays = $this->getReference("pays$randomPays");
